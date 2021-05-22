@@ -1,0 +1,39 @@
+version: '3'
+services:
+  springDemo:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    expose:
+      - '8080'
+    restart: always
+    depends_on: 
+      - mysql
+
+  mysql:
+    image: mysql:5.6
+    restart: always
+    expose:
+      - '3306'
+    environment:
+       MYSQL_DATABASE: employeedb
+       MYSQL_USER: 'root'
+       MYSQL_PASSWORD: 'password'
+       MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+       - mysql:/var/lib/mysql
+
+  ingress.okts.tk:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" 
+    restart: always
+    depends_on: 
+      - springDemo
+    
+volumes:
+  mysql_okts_tk:
+
+    
