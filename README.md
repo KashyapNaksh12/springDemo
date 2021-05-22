@@ -16,7 +16,7 @@ This application connects with MySQL database. If you want to have a full-fledge
 
 ```properties
 database.driver=com.mysql.jdbc.Driver
-database.url=jdbc:mysql://mysql.okts-test:3306/employeedb
+database.url=jdbc:mysql://mysql:3306/employeedb
 database.user=root
 database.password=password
 hibernate.dialect=org.hibernate.dialect.MySQLDialect
